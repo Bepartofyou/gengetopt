@@ -1,0 +1,11 @@
+#Bepartofyou 1.2.3 gengetopt file
+
+package "Bepartofyou"
+version "1.2.3"
+purpose "purpose: This is a demo to understand gengetopt functon"
+usage   "To generate cmd parser"
+description "description: Bepartofyou is a hansome man!    Define three type varible(flag/bool int string). In cmds, 'b' is short for 'daemon'; 'c' is short for 'config' and 'l' is short for 'level'. "
+
+option "daemon"        b "Launch Bepartofyou in background as a daemon" flag off
+option "config"        c "config file path (default=none)" string typestr="path" optional
+option "level"         l "Bepartofyou hansome levels (default=0)" int typestr="number" optional
