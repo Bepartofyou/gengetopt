@@ -1,63 +1,61 @@
-#first you should install gengetopt and cmake
+#### first you should install gengetopt and cmake
 
-#centOS
+* centOS
 
-sudo yum install gengetopt cmake
+	sudo yum install gengetopt cmake
 
-#ubuntu
+* ubuntu
 
-sudo apt-get install gengetopt cmake
+	sudo apt-get install gengetopt cmake
 
-#step into project dir (gengetopt)
+#### step into project dir (gengetopt)
 
-#if only using on unix, you can exec this cmd to generate 'cmdline.c' with include <getopt.h>
+* if only using on unix, you can exec this cmd to generate 'cmdline.c' with include <getopt.h>
 
-gengetopt -i ./doc/test.ggo --output-dir=./src/ 
+	gengetopt -i ./doc/test.ggo --output-dir=./src/ 
 
-#if you want to use on unix and windows, you should add an argument '-G',this will generate internal getopt_long function without needing include <getopt.h> in 'cmdline.c'
+* if you want to use on unix and windows, you should add an argument '-G',this will generate internal getopt_long function without needing include <getopt.h> in 'cmdline.c'
+	gengetopt -i ./doc/test.ggo --output-dir=./src/ -G
 
-gengetopt -i ./doc/test.ggo --output-dir=./src/ -G
+#### after exec this cmd, you can find 'cmdline.c' and 'cmdline.h' files in src dir.
 
-#after exec this cmd, you can find 'cmdline.c' and 'cmdline.h' files in src dir.
+* out-of-source  build
 
-#out-of-source  build
+	mkdir build
 
-mkdir build
+	cd build
 
-cd build
+	cmake -DCMAKE_BUILD_TYPE=Debug ../
 
-cmake -DCMAKE_BUILD_TYPE=Debug ../
+	make
 
-make
+#### test the function in build dir
 
-#test the function in build dir
+	./test -h
 
-./test -h
+#### you can see the stdout like this:
 
-#you can see the stdout like this:
+	Bepartofyou 1.2.3
 
-Bepartofyou 1.2.3
+	purpose: This is a demo to understand gengetopt functon
 
-purpose: This is a demo to understand gengetopt functon
+	Usage: To generate cmd parser
 
-Usage: To generate cmd parser
+	description: Bepartofyou is a hansome man!    Define three type 
 
-description: Bepartofyou is a hansome man!    Define three type 
+	varible(flag/bool int string). In cmds, 'b' is short for 'daemon'; 'c' is short 
 
-varible(flag/bool int string). In cmds, 'b' is short for 'daemon'; 'c' is short 
+	for 'config' and 'l' is short for 'level'. 
 
-for 'config' and 'l' is short for 'level'. 
+	-h, --help          Print help and exit
 
--h, --help          Print help and exit
+	-V, --version       Print version and exit
 
--V, --version       Print version and exit
+	-b, --daemon        Launch Bepartofyou in background as a daemon<br>
+							(default=off)
 
--b, --daemon        Launch Bepartofyou in background as a daemon  
+	-c, --config=path   config file path (default=none)
 
-						(default=off)
-
--c, --config=path   config file path (default=none)
-
--l, --level=number  Bepartofyou hansome levels (default=0)
+	-l, --level=number  Bepartofyou hansome levels (default=0)
 
 
